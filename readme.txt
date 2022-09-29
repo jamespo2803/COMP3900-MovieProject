@@ -1,3 +1,6 @@
+CODE FOR COMP3900 PROJECT
+A movie rating system for users to share their reviews on shows.
+
 No makefile is involved in this system.
 
 --Setup--
