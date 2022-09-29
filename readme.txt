@@ -1,4 +1,4 @@
-CODE FOR COMP3900 PROJECT
+CODE FOR COMP3900 GROUP PROJECT
 A movie rating system for users to share their reviews on shows.
 
 No makefile is involved in this system.
