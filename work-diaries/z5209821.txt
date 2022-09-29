@@ -1,0 +1,29 @@
+Rex's work diary
+
+Week 1
+Formed group, joined Jira
+
+Week 2
+We made user stories as a group and decided what languages etc to use for the project. I made a flow diagram.
+
+Week 3
+We finished the project proposal as group. I worked on the flow diagram and storyboards with Roger
+
+Week 4
+Found a copyright free data set to use as sample with our program. Modified the data (removed irrelevant fields and added director field from cast) to better suit our program. Created a script to generate reviews. Added some basic search functions.
+
+Week 5
+Added an accounts table to the database and added database functions to interact with the table. 
+
+Week 6
+Created the accounts class and worked on connecting the frontend to the back end.
+
+Week 7
+Created a movie class. Added a image column to the movies table in the database. Also wrote a script to download movie posters and add the path to the images to the database.
+
+Week 8
+Made the review class. Added functions relating to review/wishlist/banlist to the appropriate classes. Implemented rating based on banlist. Added extra fields to movie class and added these to the database. Made some fields auto update on insertion/deletion of reviews.
+
+Week 9
+Implemented recommendation functions. Refactored classes/controller/routes. Made the movie page and ratings reflect contents of the banlist. Changed how ratings are calculated so that a movie with a single 5 star review was not shown first. Refactored class files, controller and routes. Various bug fixes. Worked on adding similar movies to the moviepage with roger.
+

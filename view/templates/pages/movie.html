@@ -1,0 +1,306 @@
+{% extends "pages/layout.html" %}
+
+{% block content %}
+<body>
+  <div class="movie_wrapper">
+    <div class="movie_section">
+      <h1 class="movie_title">{{movie.title}}</h1>
+      <div class="movie_date">
+        {{movie.date}}
+      </div>
+      <div class="movie_detail_rating">
+        <fieldset class="rating" disabled>
+          <input type="radio" id="rating10" name="star_rating" value="5" {% if rating >= 4.75 and rating <= 5 %}checked{% endif %}/>
+          <label for="rating10" title="5 stars"></label>
+          <input type="radio" id="rating9" name="star_rating" value="4.5" {% if rating >= 4.25 and rating < 4.75 %}checked{% endif %}/>
+          <label for="rating9" title="4.5 stars" class="half"></label>
+          <input type="radio" id="rating8" name="star_rating" value="4" {% if rating >= 3.75 and rating < 4.25 %}checked{% endif %}/>
+          <label for="rating8" title="4 stars"></label>
+          <input type="radio" id="rating7" name="star_rating" value="3.5" {% if rating >= 3.25 and rating < 3.75 %}checked{% endif %}/>
+          <label for="rating7" title="3.5 stars" class="half"></label>
+          <input type="radio" id="rating6" name="star_rating" value="3" {% if rating >= 2.75 and rating < 3.25 %}checked{% endif %}/>
+          <label for="rating6" title="3 stars"></label>
+          <input type="radio" id="rating5" name="star_rating" value="2.5" {% if rating >= 2.25 and rating < 2.75 %}checked{% endif %}/>
+          <label for="rating5" title="2.5 stars" class="half"></label>
+          <input type="radio" id="rating4" name="star_rating" value="2" {% if rating >= 1.75 and rating < 2.25 %}checked{% endif %}/>
+          <label for="rating4" title="2 stars"></label>
+          <input type="radio" id="rating3" name="star_rating" value="1.5" {% if rating >= 1.25 and rating < 1.75 %}checked{% endif %}/>
+          <label for="rating3" title="1.5 stars" class="half"></label>
+          <input type="radio" id="rating2" name="star_rating" value="1" {% if rating >= 0.75 and rating < 1.25 %}checked{% endif %}/>
+          <label for="rating2" title="1 star"></label>
+          <input type="radio" id="rating1" name="star_rating" value="0.5" {% if rating >= 0.25 and rating < 0.75 %}checked{% endif %}/>
+          <label for="rating1" title="0.5 star" class="half"></label>
+        </fieldset>
+        {% if movie.get_rating(conn, banlist) != 0 %}
+          <p>({{'%0.2f' % rating}})</p>
+        {% else %}
+          <p>No Ratings</p>
+        {% endif %}
+      </div>
+      <div class="movie_details">
+        <div class="movie_details_left">
+          <img src="{{ url_for('static', filename=movie.image) }}" width = 200 height = 300>
+          <div class="movie_details_add_wishlist">
+            {% if current_user.is_authenticated %}
+              <form method="POST">
+              {% if subscribed %}
+                <td><button name = "remove" value = {{movie.id}} class="remove_button"> Remove from wishlist</button></td>
+              {% else %}
+                <td><button name = "add" value = {{movie.id}} class="add_button"> Add to wishlist</button></td>
+              {% endif %}
+              </form>
+            {% endif %}
+          </div>
+        </div>
+        <div class="movie_details_right">
+          <div class="movie_overview">
+            {{movie.overview}}
+          </div>
+          <div class="movie_director">
+            <b>Director: </b> {{movie.director}}
+          </div>
+          <div class="movie_genres">
+            Genre tags: 
+            {% for genre in movie.genres %}
+              <span class="tag">
+                <a href="{{ url_for('routes_bp.search_result', search_term = genre, search_type = 'Genre')}}">{{genre}}</a>
+              </span>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="similar_movies_wrapper">
+      <p style="margin-bottom: 8px"><span style="color: yellow">|</span> MOVIES SIMILAR TO THIS ONE:</p>
+      <div class="search_results_separator"></div>
+
+      <form action="{{ url_for('routes_bp.movie', movie_id=movie.id)}}" class="similar_movies_filter" method="POST">
+        <div class="similar_movies_genre_options">
+          <div class="similar_movies_text">
+            GENRES:
+          </div>
+          <div class="similar_movies_genre_list">
+            {% for genre in movie.genres %}
+              <label class="similar_movies_genre" for="similar_movies_genre_{{genre}}">
+                {{genre}}
+                {% if genre in similar_movies_genre_list %}
+                  <input type="checkbox" id="similar_movies_genre_{{genre}}" name="similar_movies_genre_list" value="{{genre}}" checked>
+                {% else %}
+                  <input type="checkbox" id="similar_movies_genre_{{genre}}" name="similar_movies_genre_list" value="{{genre}}">
+                {% endif %}
+              </label>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="similar_movies_director_options">
+          <div class="similar_movies_text">
+            SAME DIRECTOR?
+          </div>
+          <div class="similar_movies_directors_checkbox">
+            <label for="similar_movies_director">
+              {% if (similar_movies_director) and (similar_movies_director == True) %}
+                <input type="checkbox" id="similar_movies_director" name="similar_movies_director" value="True" checked>
+              {% else %}
+                <input type="checkbox" id="similar_movies_director" name="similar_movies_director" value="True">
+              {% endif %}
+            </label>
+          </div>
+        </div>
+
+        <div class="similar_movies_submit_options">
+          <button type="submit" id="similar_movies_update" name="similar_movies_updated" value="True">UPDATE</button>
+        </div>
+      </form>
+
+      <div class="similar_movies_show">
+        {% if (similar_movies | length) > 0 %}
+          <div class="home_popular_movies_list">
+            {% for similar_movie in similar_movies %}
+              <div class="home_popular_movies_list_item">
+                  <a href="{{ url_for('routes_bp.movie', movie_id=similar_movie.id)}}">
+                      <img src="{{ url_for('static', filename=similar_movie.image) }}" width=170px height=256px alt='{{similar_movie.title}} movie poster'>
+                  </a>
+                  <p><a href="{{ url_for('routes_bp.movie', movie_id=similar_movie.id)}}">{{similar_movie.title}} ({{ similar_movie.date[:4] }})</a></p>
+                  <p><span class="fa fa-star checked"> {{'%0.1f' % similar_movie.get_rating(conn, banlist)}}</p>
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <p>No similar movies were found with these filters.</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="review_wrapper">
+      <p style="margin-bottom: 8px"><span style="color: yellow">|</span> POP! REVIEWS</p>
+      <div class="search_results_separator"></div>
+
+      <div class="leave_review">
+        {% if not current_user.is_authenticated %}
+          <p>You must be logged in to leave a review.</p>
+        {% else %}
+          {% if has_reviewed %}
+            <div class='review_item' style="background-color: rgb(39, 39, 39)">
+              <p style="padding-left: 50px"><b>Your review:</b></p>
+              {% if edit %}
+                  <form method="POST">
+                    <div style="padding-left: 10px; padding-right: 10px">
+                      <textarea name="new_review" placeholder="Write your new review here!"></textarea>
+                    </div>
+                      {% if review_error != None %}
+                    <div class="form_error">
+                      {{review_error}}
+                    </div>
+                    {% endif %}
+                    <fieldset class="rating review_rating">
+                      <input type="radio" id="review10" name="rating" value="5"/><label for="review10" title="5 stars"></label>
+                      <input type="radio" id="review9" name="rating" value="4.5"/><label for="review9" title="4.5 stars" class="half"></label>
+                      <input type="radio" id="review8" name="rating" value="4"/><label for="review8" title="4 stars"></label>
+                      <input type="radio" id="review7" name="rating" value="3.5"/><label for="review7" title="3.5 stars" class="half"></label>
+                      <input type="radio" id="review6" name="rating" value="3"/><label for="review6" title="3 stars"></label>
+                      <input type="radio" id="review5" name="rating" value="2.5"/><label for="review5" title="2.5 stars" class="half"></label>
+                      <input type="radio" id="review4" name="rating" value="2"/><label for="review4" title="2 stars"></label>
+                      <input type="radio" id="review3" name="rating" value="1.5"/><label for="review3" title="1.5 stars" class="half"></label>
+                      <input type="radio" id="review2" name="rating" value="1"/><label for="review2" title="1 star"></label>
+                      <input type="radio" id="review1" name="rating" value="0.5"/><label for="review1" title="0.5 star" class="half"></label>
+                      <input type="radio" id="review0" name="rating" value="0"/>
+                    </fieldset>
+                    {% if rating_error != None %}
+                    <div class="form_error">
+                      {{rating_error}}
+                    </div>
+                    {% endif %}
+                    
+                    <button name = "cancel" value = {{user_review.id}} type="submit" class="ban_button" style="float: right; margin-right: 10px; margin-top: 10px">CANCEL</button>
+                    <button name = "update" value = {{user_review.id}} type="submit" class="unban_button" style="float: right; margin-right: 10px; margin-top: 10px">UPDATE</button>
+                  </form>
+                </div>
+              {% else %}
+              <table class = "review">
+                <tr><td>
+              <p class="review_item_rating">
+                <fieldset class="rating user_rating" disabled>
+                  <input type="radio" id="user10" value="5" {% if user_review.rating == 5 %}checked{% endif %}/>
+                  <label for="user10" title="5 stars"></label>
+                  <input type="radio" id="user9" value="4.5" {% if user_review.rating == 4.5 %}checked{% endif %}/>
+                  <label for="user9" title="4.5 stars" class="half"></label>
+                  <input type="radio" id="user8" value="4" {% if user_review.rating == 4 %}checked{% endif %}/>
+                  <label for="user8" title="4 stars"></label>
+                  <input type="radio" id="user7" value="3.5" {% if user_review.rating == 3.5 %}checked{% endif %}/>
+                  <label for="user7" title="3.5 stars" class="half"></label>
+                  <input type="radio" id="user6" value="3" {% if user_review.rating == 3 %}checked{% endif %}/>
+                  <label for="user6" title="3 stars"></label>
+                  <input type="radio" id="user5" value="2.5" {% if user_review.rating == 2.5 %}checked{% endif %}/>
+                  <label for="user5" title="2.5 stars" class="half"></label>
+                  <input type="radio" id="user4" value="2" {% if user_review.rating == 2 %}checked{% endif %}/>
+                  <label for="user4" title="2 stars"></label>
+                  <input type="radio" id="user3" value="1.5" {% if user_review.rating == 1.5 %}checked{% endif %}/>
+                  <label for="user3" title="1.5 stars" class="half"></label>
+                  <input type="radio" id="user2" value="1" {% if user_review.rating == 1 %}checked{% endif %}/>
+                  <label for="user2" title="1 star"></label>
+                  <input type="radio" id="user1" value="0.5" {% if user_review.rating == 0.5 %}checked{% endif %}/>
+                  <label for="user1" title="0.5 star" class="half"></label>
+                </fieldset>
+                ({{user_review.rating}})
+              </p>
+              <p>"{{user_review.content}}"</p>
+              </td></tr>
+              <td>
+                <div class="banlist_item_unban">
+                  <form method="POST">
+                    <button name="edit_review" value={{user_review.id}} class="unban_button" style="margin-bottom: 10px; margin-right: 20px">EDIT YOUR REVIEW</button>
+                    <button name="remove_review" value={{user_review.id}} class="ban_button">REMOVE YOUR REVIEW</button>
+                  </form>
+              </div>
+              </td>
+              </table>
+            </div>
+            {% endif %}
+          {% else %}
+            <p id="review_blurb">Write your own review.</p>
+                <form method="POST">
+                  <textarea name="new_review" placeholder="Write your review here."></textarea>
+                  {% if review_error != None %}
+                  <div class="form_error">
+                    {{review_error}}
+                  </div>
+                  {% endif %}
+                  <fieldset class="rating review_rating">
+                    <input type="radio" id="review10" name="rating" value="5"/><label for="review10" title="5 stars"></label>
+                    <input type="radio" id="review9" name="rating" value="4.5"/><label for="review9" title="4.5 stars" class="half"></label>
+                    <input type="radio" id="review8" name="rating" value="4"/><label for="review8" title="4 stars"></label>
+                    <input type="radio" id="review7" name="rating" value="3.5"/><label for="review7" title="3.5 stars" class="half"></label>
+                    <input type="radio" id="review6" name="rating" value="3"/><label for="review6" title="3 stars"></label>
+                    <input type="radio" id="review5" name="rating" value="2.5"/><label for="review5" title="2.5 stars" class="half"></label>
+                    <input type="radio" id="review4" name="rating" value="2"/><label for="review4" title="2 stars"></label>
+                    <input type="radio" id="review3" name="rating" value="1.5"/><label for="review3" title="1.5 stars" class="half"></label>
+                    <input type="radio" id="review2" name="rating" value="1"/><label for="review2" title="1 star"></label>
+                    <input type="radio" id="review1" name="rating" value="0.5"/><label for="review1" title="0.5 star" class="half"></label>
+                    <input type="radio" id="review0" name="rating" value="0"/>
+                  </fieldset>
+                  {% if rating_error != None %}
+                  <div class="form_error">
+                    {{rating_error}}
+                  </div>
+                  {% endif %}
+                  <button type="submit" class="unban_button" style="float: right; margin-right: 10px; margin-top: 10px">SUBMIT</button>
+                </form>
+              </div>
+            {% endif %}
+        {% endif %}
+      </div>
+      <div class="review_list">
+        <div class="review_item_separator"></div>
+        {% if review_no == 0 %}
+          <p>There are currently no reviews for this movie.</p>
+        {% else %}
+            {% for review in reviews %}
+            <table class = "review">
+              <tr><td>
+              <div class='review_item'>
+                <p>Review by <a class="review_item_user" href="{{ url_for('routes_bp.profile', user_id=review.author_id)}}">{{review.author_name}}</a></p>
+                <p class="review_item_rating">
+                  <fieldset class="rating user_rating" disabled>
+                    <input type="radio" id="{{review.id}}_10" value="5" {% if review.rating == 5 %}checked{% endif %}/>
+                    <label for="{{review.id}}_10" title="5 stars"></label>
+                    <input type="radio" id="{{review.id}}_9" value="4.5" {% if review.rating == 4.5 %}checked{% endif %}/>
+                    <label for="{{review.id}}_9" title="4.5 stars" class="half"></label>
+                    <input type="radio" id="{{review.id}}_8" value="4" {% if review.rating  == 4 %}checked{% endif %}/>
+                    <label for="{{review.id}}_8" title="4 stars"></label>
+                    <input type="radio" id="{{review.id}}_7" value="3.5" {% if review.rating == 3.5 %}checked{% endif %}/>
+                    <label for="{{review.id}}_7" title="3.5 stars" class="half"></label>
+                    <input type="radio" id="{{review.id}}_6" value="3" {% if review.rating == 3 %}checked{% endif %}/>
+                    <label for="{{review.id}}_6" title="3 stars"></label>
+                    <input type="radio" id="{{review.id}}_5" value="2.5" {% if review.rating == 2.5 %}checked{% endif %}/>
+                    <label for="{{review.id}}_5" title="2.5 stars" class="half"></label>
+                    <input type="radio" id="{{review.id}}_4" value="2" {% if review.rating == 2 %}checked{% endif %}/>
+                    <label for="{{review.id}}_4" title="2 stars"></label>
+                    <input type="radio" id="{{review.id}}_3" value="1.5" {% if review.rating == 1.5 %}checked{% endif %}/>
+                    <label for="{{review.id}}_3" title="1.5 stars" class="half"></label>
+                    <input type="radio" id="{{review.id}}_2" value="1" {% if review.rating == 1 %}checked{% endif %}/>
+                    <label for="{{review.id}}_2" title="1 star"></label>
+                    <input type="radio" id="{{review.id}}_1" value="0.5" {% if review.rating == 0.5 %}checked{% endif %}/>
+                    <label for="{{review.id}}_1" title="0.5 star" class="half"></label>
+                  </fieldset>
+                  <span>({{review.rating}})</span>
+                </p>
+                <p>"{{review.content}}"</p>
+              </div>
+              </td></tr>
+              </table>
+              <div class="review_item_separator"></div>
+            {% endfor %}
+            <div class="search_pages_nav">
+              {% for i in range(1,total_pages+1) %}
+                <a {% if i == review_page_no %}class="active"{% endif %} href="{{ url_for('routes_bp.movie_review_pages', review_page_no=i, movie_id=movie.id)}}">{{i}}</a>
+              {% endfor %}
+            </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</body>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+Week 1
+Group formed. Joined into the Jira and GitHub. Discussed which languages we wanted to use for the project.
+
+Week 2
+Worked on userstories together on Jira and allocated different parts of the project proposal to work on in smaller groups. I was tasked with the System Architecture together with Katherine. We made different diagrams to demonstrate our design, but we were not certain about which was the best of it and will discuss it with the group and mentor next week.
+
+Week 3
+Fixed up and finalised the System Architecture. Fixed and finalised the Jira board. Finished off the project proposal.
+
+Week 4
+Assigned and completed the controller/business end of the search function. Connected it to the Model/Database layer.
+
+Week 5
+I was assigned to the doing the wishlist section and the interface after a user is logged in.
+
+Week 6
+Ran into a lot of issues with relativity with the code source, causing a lot of bugs and debugging for a very long time but was eventually able to get wishlist working properly.
+
+Week 7
+Finally got the wishlist working properly, had to refactor some code so that it worked correctly with Robin's code for accounts. Have to make sure that adding and removing movies from wishlist works correctly but I need Katherine's search function to be completed first and the movie page to be completed as well in order to complete that section.
+
+Week 8
+Got wishlist to work correctly in conjuction with everyone else's code. Need to have viewing wishlist of other people completed and I'm also assigned to complete the banlist for users.
+
+Week 9
+Viewing other player's wishlist completed, Banlist is completed, can ban or unban users and view your own banlist, made it so that users can view their own reviews, made it so that users can edit or remove their reviews

@@ -1,0 +1,50 @@
+{% extends "pages/layout.html" %}
+
+{% block content %}
+
+<div class="profile_wrapper">
+    <div class="profile">
+        <div class="profile_left">
+            <i class="fa fa-user-circle-o fa-4x"></i>
+        </div>
+        <div class="profile_right">
+            <p><span style="color: skyblue">|</span> {{ acc.username }}</p>
+            {% if curruser != -1 %}
+                {% if curruser != user_id %}
+                <form method="POST">
+                    {% if banned %}
+                        <button name="unban" value="{{acc.id}}" class="unban_button">UNBLACKLIST USER</button>
+                    {% else %}
+                        <button name="ban" value="{{acc.id}}" class="ban_button">BLACKLIST USER</button>
+                    {% endif %}
+                </form>
+                {% else %}
+                    <a href="{{ url_for('routes_bp.change_profile_details', user_id=current_user.id) }}" id="profile_edit">EDIT ACCOUNT</a>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="review_item_separator"></div>
+    
+    <div class="profile_links">
+        {% if curruser == user_id %}
+            <a href="{{ url_for('routes_bp.wishlist', user_id=acc.id) }}"><span style="color: orange">|</span> WISHLIST</a>
+            <a href="{{ url_for('routes_bp.user_reviews', user_id=acc.id) }}"><span style="color: orange">|</span> YOUR REVIEWS</a>
+            <a href="{{ url_for('routes_bp.banlist', user_id=acc.id) }}"><span style="color: orange">|</span> BLACKLISTED USERS</a>
+            
+            <div class="review_item_separator"></div>
+
+            <div class="profile_details">
+                <h2><span style="color: yellow">|</span> YOUR DETAILS</h2>
+                <p><b>Email:</b> {{ acc.email }}</p>
+                <p><b>Username:</b> {{ acc.username }}</p>
+            </div>
+        {% else %}
+            <a href="{{ url_for('routes_bp.wishlist', user_id=acc.id) }}"><span style="color: orange">|</span> VIEW WISHLIST</a>
+            <a href="{{ url_for('routes_bp.user_reviews', user_id=acc.id) }}"><span style="color: orange">|</span> VIEW REVIEWS</a>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

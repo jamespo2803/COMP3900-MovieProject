@@ -1,0 +1,63 @@
+{% extends "pages/layout.html" %}
+
+{% block content %}
+  <div class="login_wrapper">
+    <div class="login_title">
+      Sign In
+    </div>
+
+    <div class="login_blurb">
+      Don't have an account? <a href="{{ url_for('auth_bp.signup') }}">Sign up here</a>.
+    </div>
+
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+      {{ message }}
+    </div>
+    {% endfor %}
+
+    <form method="POST" action="/login">
+      {{ form.csrf_token }}
+
+      <div class="form_field">
+        <div class="form_field_title">
+          {{ form.email.label }}
+        </div>
+        <div class="form_field_input">
+          {{ form.email }}
+        </div>
+        <div class="form_error">
+          {% if form.email.errors %}
+              {% for error in form.email.errors %}
+                <br>
+                {{ error }}
+              {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="form_field">
+        <div class="form_field_title">
+          {{ form.password.label }}
+        </div>
+        <div class="form_field_input">
+          {{ form.password }}
+        </div>
+        <div class="form_error">
+          {% if form.password.errors %}
+              {% for error in form.password.errors %}
+                <br>
+                {{ error }}
+              {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="form_field">
+        <div class="login_submit">
+          {{ form.submit }}
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock %}

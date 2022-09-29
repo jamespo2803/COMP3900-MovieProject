@@ -1,0 +1,55 @@
+{% extends "pages/layout.html" %}
+
+{% block content %}
+
+<div class="wishlist_wrapper">
+    {% if curruser == userid %}
+        <p><span style="color: orange">|</span> YOUR WISHLIST</p>
+    {% else %}
+        <p><span style="color: orange">|</span> {{ username }}'s WISHLIST</p>
+    {% endif %}
+    <div class="search_results_separator"></div>
+
+    {% if wishlist %}
+    <div class="wishlist_items">
+        {% for wish in wishlist %}
+            <div class="wishlist_item">
+                <div class="wishlist_item_left">
+                    <a href="{{ url_for('routes_bp.movie', movie_id=wish.id)}}">
+                        <img src="{{ url_for('static', filename=wish.image) }}" width=170px height=256px alt='{{wish.title}} movie poster'>
+                    </a>
+                </div>
+                <div class="wishlist_item_right">
+                    <h2><a href="{{ url_for('routes_bp.movie', movie_id=wish.id)}}">{{wish.title}}</a> <span class="search_results_item_date">({{ wish.date[:4] }})</span></h2>
+                    <p>Director: {{wish.director}}</p>
+                    <p>
+                        Genres: {% for genre in wish.genres %}<span class="tag"> <a href="{{ url_for('routes_bp.search_result', search_term = genre, search_type = 'Genre')}}">{{genre}}</a></span>{% endfor %}
+                    </p>
+                    {% if curruser == userid %}
+                    <form method="POST">
+                        <div class="wishlist_links">
+                            <button name="remove" value = {{wish.id}} class="wishlist_item_remove">REMOVE</button>
+                        </div>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="search_pages_nav">
+        {% for i in range(1,total_pages+1) %}
+          <a {% if i == page_no %}class="active"{% endif %} href="{{ url_for('routes_bp.wishlist_pages', user_id = userid, page_no=i)}}">{{i}}</a>
+        {% endfor %}
+    </div>
+    {% else %}
+        <div class="wishlist_empty_message">
+            {% if curruser == userid %}
+                <p>Your wishlist is empty. Add any movies you plan on watching in the future here!</p>
+            {% else %}
+                <p>{{username}}'s wishlist is currently empty.</p>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

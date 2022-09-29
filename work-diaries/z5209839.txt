@@ -1,0 +1,28 @@
+roger's work diary (hello)
+
+week1
+group formed, i created jira and github stuff.
+
+week2
+group made user stories and decided on languages to use for system with team. i wrote in background.
+ 
+week3
+group finished project proposal. i made storyboards and worked on flow diagram with rex.
+
+week 4
+created uml diagrams and started working on sql database with rex.
+
+week 5
+started work on updating front-end visuals.
+
+week 6
+updated home page (and site layout) visually a little. completed retrospective a with group.
+
+week 7
+updated site layout for home page, and search, sign-up and log-in pages.
+
+week 8
+continued to update site layout for home page (top nav bar), search pages. completed retrospective b with group.
+
+week 9
+continued to polish up site, updated various pages. planned for project final report with group.

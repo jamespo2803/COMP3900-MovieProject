@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FilmFinders</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="topnav">
+        <div class="topnav_left">
+          <div class="topnav_logo">
+            <a href="{{ url_for('routes_bp.home') }}">
+              <img alt="Home" src="{{ url_for('static', filename='images/pop-large.png') }}">
+            </a>
+          </div>
+        </div>
+        
+        <div class="topnav_right">
+          <div class="topnav_search">
+            <form method="POST" action="{{ url_for('routes_bp.search')}}">
+              <select name="search_options" class="advanced_search_dropdown">
+                <option value="Movie" {% if search_type is defined and search_type == 'Movie' %}selected{% endif %}>Movie</option>
+                <option value="Director" {% if search_type is defined and search_type == 'Director' %}selected{% endif %}>Director</option>
+                <option value="Genre" {% if search_type is defined and search_type == 'Genre' %}selected{% endif %}>Genre</option>
+              </select>
+              <input type="text" placeholder="Search.." value="{% if search_term is defined %}{{search_term}}{% endif %}" 
+                name="search" id="search_field" onkeydown="checkIfEmpty()">
+              <button type="submit" id="search_button" onmouseover="checkIfEmpty()" disabled><i class="fa fa-search"></i></button>
+            </form>
+          </div>
+          <div class="topnav_divider_container">
+            <div class="topnav_divider"></div>
+          </div>
+          {% if not current_user.is_authenticated %}
+            <div class="topnav_signin">
+              <a href="{{ url_for('auth_bp.login') }}">Sign In</a>
+            </div>
+          {% else %}
+            <div class="topnav_user">
+              <button class="topnav_user_drop"><i class="fa fa-user-o fa-sm"></i>{{ current_user.username }}</button>
+              <div class="topnav_user_drop_content">
+                <a href="{{ url_for('routes_bp.profile', user_id=current_user.id) }}">Profile</a>
+                <a href="{{ url_for('auth_bp.logout') }}">Logout</a>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <script type="text/javascript">
+        function checkIfEmpty(){
+          if(document.getElementById("search_field").value==="") { 
+            document.getElementById('search_button').disabled = true; 
+          } else { 
+            document.getElementById('search_button').disabled = false;
+          }
+        }
+      </script>
+      
+      <div class="page_content">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </div>
+</body>
+</html>

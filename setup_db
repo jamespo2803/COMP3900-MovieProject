@@ -1,0 +1,12 @@
+#!/bin/bash
+
+rm -f db/movies.db
+sqlite3 db/movies.db < db/sql/schema.sql
+
+echo "Do you wish to add sample data to the database?"
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes ) sqlite3 db/movies.db < db/sql/movies.sql; sqlite3 db/movies.db < db/sql/sample.sql; break;;
+        No ) break;;
+    esac
+done

@@ -1,0 +1,49 @@
+{% extends "pages/layout.html" %}
+
+{% block content %}
+
+<div class="search_wrapper">
+  <p id="search_query_summary">
+    {% if (mov_list is defined) and mov_list %}
+      <span style="color: green">|</span> FOUND {{result_no}} MATCHES FOR "{{ search_term }}".
+    {% else %}
+    <span style="color: red">|</span> NO MATCHES FOUND FOR "{{ search_term }}".
+    {% endif %}
+    <div class="search_results_separator"></div>
+  </p>
+
+  {% if (mov_list is defined) and mov_list %}
+    <div class="search_results">
+      {% for movie in mov_list %}
+        <div class="search_results_item">
+          <div class="search_results_item_left">
+            <a href="{{ url_for('routes_bp.movie', movie_id=movie.id)}}">
+              <img src="{{ url_for('static', filename=movie.image) }}" width=170px height=256px alt='{{movie.title}} movie poster'>
+            </a>
+          </div>
+          <div class="search_results_item_right">
+            <h2><a href="{{ url_for('routes_bp.movie', movie_id=movie.id)}}">{{movie.title}}</a> <span class="search_results_item_date">({{ movie.date[:4] }})</span></h2>
+            <p>Director: {{movie.director}}</p>
+            {% if movie.get_rating(conn, banlist) != 0 %}
+              <p>Average Rating: {{'%0.2f' % movie.get_rating(conn, banlist)}}</p>
+            {% else %}
+              <p>No Ratings</p>
+            {% endif %}
+            <p>
+              Genres: {% for genre in movie.genres %}<span class="tag"> <a href="{{ url_for('routes_bp.search_result', search_term = genre, search_type = 'Genre')}}"> {{genre}}</a></span>{% endfor %}
+            </p>
+          </div>
+        </div>
+        <div class="search_results_separator"></div>
+      {% endfor %}
+    </div>
+
+    <div class="search_pages_nav">
+      {% for i in range(1,total_pages+1) %}
+        <a {% if i == page_no %}class="active"{% endif %} href="{{ url_for('routes_bp.search_result_pages', page_no=i, search_type=search_type, search_term=search_term)}}">{{i}}</a>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+
+{% endblock %}

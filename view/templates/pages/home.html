@@ -1,0 +1,43 @@
+{% extends "pages/layout.html" %}
+
+{% block content %}
+
+<div class="home_wrapper">
+    <div class="home_get_started">
+        <p id="home_blurb">
+            Track your films. Watch your films.
+        </p>
+        {% if not current_user.is_authenticated %}
+        <div id="home_get_started_signup_wrapper">
+            <a href="{{ url_for('auth_bp.signup') }}" id="home_get_started_signup">GET STARTED</a>
+        </div>
+        {% endif %}
+    </div>
+
+    <h1 id="home_popular_title">
+        <span style="color: yellow">|</span> Top Rated Movies
+    </h1>
+    <div class="home_popular_movies">
+        <div class="home_popular_movies_list">
+            {% for movie in movies %}
+                <div class="home_popular_movies_list_item">
+                    <a href="{{ url_for('routes_bp.movie', movie_id=movie.id)}}">
+                        <img src="{{ url_for('static', filename=movie.image) }}" width=170px height=256px alt='{{movie.title}} movie poster'>
+                    </a>
+                    <p><a href="{{ url_for('routes_bp.movie', movie_id=movie.id)}}">{{movie.title}} ({{ movie.date[:4] }})</a></p>
+                    {% if movie.get_rating(conn, banlist) != 0 %}
+                    <p><span class="fa fa-star checked"> {{'%0.2f' % movie.get_rating(conn, banlist)}}</p>
+                    {% else %}
+                    <p><span class="fa fa-star checked"> No Ratings</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            {% for i in range(7 - movies|length) %}
+                <div class="home_popular_movies_list_item"></div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

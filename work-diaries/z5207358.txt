@@ -1,0 +1,29 @@
+Robin's work diary
+
+week 1:
+Groups formed, project and communication method established.
+
+week 2:
+Group decides the programming languages to be used on project and also wrote some user stories.
+I wrote some extra user stories that were missed after the group meeting.
+
+week 3:
+We finish off the project proposal.
+
+week 4:
+Began work and reasearch into implementing the frontend
+
+week 5:
+Begin work to implement login and signup to accounts
+
+week 6:
+Fixed login and created a profile page
+
+week 7:
+Begun work on creating movie details page
+
+week 8:
+finished work on movie_details and did search results and advanced search frontend
+
+week 9:
+completed work on frontend review and change username/password, began report

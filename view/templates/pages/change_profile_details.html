@@ -1,0 +1,82 @@
+{% extends "pages/layout.html" %}
+
+{% block content %}
+
+<div class="profile_wrapper">
+    <p><span style="color: blue">|</span> CHANGE PROFILE DETAILS</p>
+    <div class="search_results_separator"></div>
+
+    <div class="profile_change_form">
+        <p><span style="color:orange">|</span> CHANGE USERNAME</p>
+        <form method="POST">
+            <div class="form_field">
+                <div class="form_field_title">
+                    New Username
+                </div>
+                <div class="form_field_input">
+                    <input type="text" placeholder="Enter new username.." name="change_username">
+                </div>
+                <div class="form_error">
+                    {% if username_error is defined %}
+                        {{username_error}}
+                    {% endif %}
+                </div>
+            </div>
+        
+            <div class="form_field">
+                <div class="submit_blue">
+                    <button type="submit">CHANGE USERNAME</button>
+                </div>
+            </div>
+        </form>
+        {% if username_confirm is defined %}
+            {{username_confirm}}
+        {% endif %}
+    </div>
+
+    <div class="review_item_separator"></div>
+
+    <div class="profile_change_form">
+        <p><span style="color: orange">|</span> CHANGE PASSWORD</p>
+        <form method="POST">
+            <div class="form_field">
+                <div class="form_field_title">
+                    Current Password
+                </div>
+                <div class="form_field_input">
+                    <input type="password" placeholder="Enter current password.." name="change_old_pass">
+                </div>
+                <div class="form_error">
+                    {% if old_pass_error is defined %}
+                        {{old_pass_error}}
+                    {% endif %}
+                </div>
+            </div>
+        
+            <div class="form_field">
+                <div class="form_field_title">
+                    New Password
+                </div>
+                <div class="form_field_input">
+                    <input type="password" placeholder="Enter new password.." name="change_new_pass">
+                </div>
+                <div class="form_error">
+                    {% if new_pass_error is defined %}
+                        {{new_pass_error}}
+                    {% endif %}
+                </div>
+            </div>
+        
+            <div class="form_field">
+                <div class="submit_blue">
+                    <button type="submit">CHANGE PASSWORD</button>
+                </div>
+            </div>
+        </form>
+        {% if pass_confirm is defined %}
+            {{pass_confirm}}
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

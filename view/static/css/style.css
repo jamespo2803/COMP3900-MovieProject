@@ -1,0 +1,1278 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Nunito', Arial, sans-serif;
+}
+
+body {
+  background-color: black;
+  color: white;
+}
+
+html {
+  min-width: 1000px;
+}
+
+.ban_button, .wishlist_item_remove {
+  background-color: rgb(214, 65, 65);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+  text-align: center;
+  text-decoration: none; */
+}
+
+.ban_button:hover, .wishlist_item_remove:hover {
+  background-color:  rgb(216, 87, 87);
+  cursor: pointer;
+}
+
+.banlist_item {
+  float: left;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  width: 100%;
+}
+
+.banlist_item_unban {
+  float: right;
+  padding-right: 20px;
+}
+
+.banlist_item_user {
+  display: inline-block;
+  margin-left: 20px;
+  margin-right: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.banlist_item_user a {
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-decoration: none;
+}
+
+.checked {
+  color: orange;
+}
+
+.fa {
+  margin-right: 10px;
+}
+
+.form_error {
+  color: red;
+  font-size: 12px;
+  font-style: italic;
+  padding-left: 5%;
+}
+
+.form_field {
+  margin-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 20px;
+}
+
+.form_field_input input {
+  background-color: #17171a;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+  height: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 100%;
+}
+
+.form_field_input input:focus {
+  outline: none;
+}
+
+.form_field_title {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.home_get_started {
+  margin-bottom: 50px;
+  padding-bottom: 40px;
+}
+
+.home_popular_movies {
+  overflow: hidden;
+  overflow-x: scroll;
+}
+
+.home_popular_movies_list {
+  border-spacing: 5px;
+  display: table;
+  margin: auto;
+  width: 100%;
+}
+
+.home_popular_movies_list_item {
+  background-color:  #0c0c0d;
+  display: table-cell;
+  text-align: center;
+  width: 170px;
+}
+
+.home_popular_movies_list_item a {
+  color: white;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.home_popular_movies_list_item a:hover {
+  color: skyblue;
+  opacity: 0.8;
+}
+
+.home_popular_movies_list_item p {
+  font-size: 12px;
+  text-align: center;
+}
+
+.home_wrapper, .profile_wrapper, .movie_wrapper, .search_wrapper, .wishlist_wrapper {
+  min-height: calc(100vh - 100px);
+  padding-top: 30px;
+}
+
+.leave_review {
+  padding-bottom: 20px;
+  padding-left: 10px;
+  padding-top: 20px;
+}
+
+.leave_review textarea {
+  background-color: #1f1f1f;
+  border: 1px solid white;
+  color: white;
+  height: 100px;
+  padding: 10px;
+  resize: none;
+  width: 100%;
+}
+
+.login_blurb {
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 30px;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+.login_blurb a {
+  color: rgb(90, 190, 236);
+}
+
+.login_submit input[type="submit"] {
+  background-color: rgb(27, 49, 177);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+  height: 50px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.login_submit input[type="submit"]:hover {
+  background-color: rgb(34, 56, 177);
+  cursor: pointer;
+}
+
+.login_title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.login_wrapper {
+  background-color: #0c0c0d;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  padding: 30px;
+  width: 30%;
+}
+
+.movie_date {
+  font-size: 11px;
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+.movie_detail_rating {
+  text-align: center;
+}
+
+.movie_detail_rating fieldset {
+  margin-bottom: 0px;
+}
+
+.movie_detail_rating p {
+  margin-top: 0px;
+}
+
+.movie_details {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 840px;
+}
+
+.movie_details_add_wishlist {
+  padding-top: 10px;
+}
+
+.movie_details_left {
+  float: left;
+  padding: 20px;
+  text-align: center;
+  width: 240px;
+}
+
+.movie_details_right {
+  float: right;
+  padding: 20px;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  width: 600px;
+}
+
+.movie_director {
+  font-size: 15px;
+  padding-bottom: 30px;
+  padding-left: 15px;
+}
+
+.movie_genres {
+  padding-left: 15px;
+}
+
+.movie_overview {
+  font-size: 15px;
+  padding-bottom: 30px;
+}
+
+.movie_section {
+  padding-bottom: 35px;
+}
+
+.movie_title {
+  font-size: 50px;
+  margin-bottom: 0px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.movie_wrapper {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.page_content {
+  margin-left: 17%;
+  margin-right: 17%;
+  padding-bottom: 20px;
+  width: 66%;
+}
+
+.profile {
+  float: left;
+  margin-bottom: 40px;
+  padding-left: 40px;
+  width: 100%;
+}
+
+.profile p {
+  font-weight: bold;
+}
+
+.profile_change_form {
+  padding-left: 10px;
+  padding-top: 20px;
+  width: 30%;
+}
+
+.profile_details {
+  float: left;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.profile_details h2 {
+  font-size: 18px;
+  padding-left: 20px;
+}
+
+.profile_details p {
+  font-size: 15px;
+  padding-left: 20px;
+}
+
+.profile_left {
+  float: left;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  width: 4em;
+}
+
+.profile_links {
+  float: left;
+  margin-bottom: 25px;
+  margin-top: 30px;
+  padding-left: calc(3em + 30px);
+  width: 100%;
+}
+
+.profile_right {
+  float: left;
+  margin-left: 10px;
+}
+
+.profile_links a {
+  clear: left;
+  color: white;
+  display: block;
+  float: left;
+  font-size: 14px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  padding: 15px;
+  text-decoration: none;
+}
+
+.profile_links a:hover {
+  background-color: #1b1b1b;
+  cursor: pointer;
+}
+
+.review_history_item {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.review_history_item_poster {
+  padding-bottom: 20px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.review_history_item_poster a {
+  color: white;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.review_history_item_poster a:hover {
+  color: skyblue;
+  opacity: 0.8;
+}
+
+.review_history_item_review {
+  background-color: #151518;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-x: hidden;
+  padding: 20px;
+  width: 80%;
+}
+
+.review_history_item_review p {
+  float: left;
+  font-size: 13px;
+  padding-left: 20px;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.review_history_item_review_stars {
+  float: left;
+  font-size: 12px;
+  font-weight: bold;
+  width: 100%;
+}
+
+.review_history_item_container {
+  float: left;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.review_item {
+  display: block;
+  float: left;
+  padding: 5px;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.review_item p {
+  padding-left: 10px;
+}
+
+.review_item span {
+  padding-left: 10px;
+  vertical-align: 80%;
+}
+
+.review_item_rating {
+  padding-right: 30px;
+  text-align: right;
+}
+
+.review_item_user {
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.review_item_user:hover {
+  color: skyblue;
+  cursor: pointer;
+}
+
+.review_list {
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 840px;
+}
+
+.review_wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 840px;
+}
+
+.review_wrapper p {
+  font-size: 13px;
+}
+
+.review_item_separator {
+  border-top: 1px solid lightgrey;
+  display: block;
+  float: left;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  opacity: 30%;
+  width: 100%;
+}
+
+.search_pages_nav {
+  padding-bottom: 30px;
+  padding-top: 30px;
+  text-align: center;
+}
+
+.search_pages_nav a {
+  background-color: #1f1f1f;
+  border: 1px solid white;
+  color: white;
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-decoration: none;
+}
+
+.search_pages_nav a:hover {
+  background-color: #383838;
+}
+
+.search_pages_nav a.active {
+  background-color: #555555;
+}
+
+.search_results, .wishlist_list {
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 35px;
+}
+
+.search_results {
+  float: left;
+  padding: 0px;
+  padding-bottom: 20px;
+  padding-top: 0px;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.search_results_item {
+  display: table;
+  color: white;
+  float: left;
+  width: 100%;
+}
+
+.search_results_item_date {
+  color: lightgrey;
+  font-size: 16px;
+  font-weight: none;
+}
+
+.search_results_item_left {
+  display: table-cell;
+  width: 172px; 
+}
+
+.search_results_item_left a {
+  float: left;
+}
+
+.search_results_item_left a:hover {
+  background-color: skyblue;
+  opacity: 0.8;
+}
+
+.search_results_item_left img {
+  padding: 0;
+  margin: 0;
+}
+
+.search_results_item_right {
+  display: table-cell;
+  overflow: hidden;
+  padding-left: 30px;
+  vertical-align: top;
+}
+
+.search_results_item_right h2 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.search_results_item_right h2 a {
+  color: white;
+  text-decoration: none;
+}
+
+.search_results_item_right h2 a:hover {
+  color: rgb(124, 152, 230);
+  cursor: pointer;
+}
+
+.search_results_item_right p {
+  color: lightgrey;
+  font-size: 14px;
+}
+
+.search_results_separator {
+  border-top: 1px solid grey;
+  float: left;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.signup_submit input[type="submit"] {
+  background-color: rgb(54, 73, 182);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+  height: 50px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.signup_submit input[type="submit"]:hover {
+  background-color: rgb(60, 79, 182);
+  cursor: pointer;
+}
+
+.signup_wrapper {
+  background-color: #0c0c0d;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  padding: 30px;
+  width: 30%;
+}
+
+.similar_movies_directors_checkbox {
+  display: table-cell;
+  padding: 5px;
+  vertical-align: middle;
+}
+
+.similar_movies_director_options {
+  display: table;
+  float: left;
+  height: 50px;
+  width: 100%;
+}
+
+.similar_movies_genre {
+  background-color: #28282b;
+  border-radius: 20px;
+  display: inline-block;
+  font-size: 13px;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  user-select: none;
+}
+
+.similar_movies_genre + .similar_movies_genre {
+  margin-left: 15px;
+}
+
+.similar_movies_genre input {
+  border-radius: 5px;
+}
+
+.similar_movies_genre_list {
+  display: table-cell;
+  padding: 5px;
+  vertical-align: middle;
+}
+
+.similar_movies_genre_options {
+  display: table;
+  height: 50px;
+  width: 100%;
+}
+
+.similar_movies_show {
+  overflow: hidden;
+  overflow-x: scroll;
+  width: 100%;
+}
+
+.similar_movies_submit_options {
+  text-align: center;
+  width: 100%;
+}
+
+.similar_movies_submit_options button {
+  background-color: rgb(241, 245, 29);
+  border: none;
+  border-radius: 3px;
+  color: black;
+  font-weight: bold;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.similar_movies_submit_options button:hover {
+  background-color: rgb(179, 202, 78);
+  cursor: pointer;
+}
+
+.similar_movies_text {
+  display: table-cell;
+  font-size: 13px;
+  padding: 5px;
+  padding-left: 15px;
+  vertical-align: middle;
+  width: 150px;
+  user-select: none;
+}
+
+.similar_movies_wrapper {
+  margin-bottom: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  width: 840px;
+}
+
+.similar_movies_wrapper p {
+  font-size: 13px;
+}
+
+/* Rating CSS, credits to: https://codeconvey.com/css-star-rating-radio-buttons */
+.star-cb-group {
+  direction: rtl;
+  font-size: 0;
+  unicode-bidi: bidi-override;
+}
+.star-cb-group * {
+  font-size: 1rem;
+}
+.star-cb-group > input {
+  display: none;
+}
+.star-cb-group > input + label {
+  display: inline-block;
+  overflow: hidden;
+  text-indent: 9999px;
+  width: 1em;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.star-cb-group > input + label:before {
+  display: inline-block;
+  text-indent: -9999px;
+  content: "☆";
+  color: #888;
+}
+.star-cb-group > input:checked ~ label:before, .star-cb-group > input + label:hover ~ label:before, .star-cb-group > input + label:hover:before {
+  content: "★";
+  color: gold;
+  text-shadow: 0 0 1px #333;
+}
+.star-cb-group > .star-cb-clear + label {
+  text-indent: -9999px;
+  width: .5em;
+  margin-left: -.5em;
+}
+.star-cb-group > .star-cb-clear + label:before {
+  width: .5em;
+}
+.star-cb-group:hover > input + label:before {
+  content: "☆";
+  color: #888;
+  text-shadow: none;
+}
+.star-cb-group:hover > input + label:hover ~ label:before, .star-cb-group:hover > input + label:hover:before {
+  content: "★";
+  color: gold;
+  text-shadow: 0 0 1px #333;
+}
+/* End: https://codeconvey.com/css-star-rating-radio-buttons */
+
+.rating {
+  display: inline-block;
+  border: 0;
+}
+
+.rating > input {
+  display: none;
+}
+
+.rating > label {
+  float: right;
+}
+
+.rating > label:before {
+  display: inline-block;
+  font-size: 1.1rem;
+  padding: .3rem .2rem;
+  margin: 0;
+  cursor: default;
+  font-family: FontAwesome;
+  content: "\f005 ";
+}
+
+.user_rating > label:before {
+  font-size: 0.8rem;
+}
+
+.review_rating > label:before {
+  cursor: pointer;
+}
+
+.review_rating > label:last-child:before {
+  content: "\f006 ";
+}
+
+.rating .half:before {
+  content: "\f089 ";
+  position: absolute;
+  padding-right: 0;
+}
+ 
+input:checked ~ label,
+.review_rating label:hover, .review_rating label:hover ~ label {
+  color: #73B100;
+}
+.review_rating input:checked + label:hover, .review_rating input:checked ~ label:hover,
+.review_rating input:checked ~ label:hover ~ label,
+.review_rating label:hover ~ input:checked ~ label {
+  color: #A6E72D;
+}
+
+.submit_blue button[type="submit"] {
+  background-color: rgb(54, 73, 182);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 12px;
+  height: 40px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 160px;
+}
+
+.submit_blue button[type="submit"]:hover {
+  background-color: rgb(60, 79, 182);
+  cursor: pointer;
+}
+
+.tag {
+  border-radius: 12px;
+  background: #4e4e4e;
+  display: inline-block;
+  font-size: 12px;
+  margin-left: 2px;
+  margin-right: 2px;
+  padding-bottom: 5px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 5px;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+}
+
+.tag a {
+  color: white;
+  text-decoration: none;
+}
+
+.tag a:hover {
+  color: skyblue;
+  cursor: pointer;
+}
+
+.topnav {
+  background-color: #0c0c0d;
+  height: 100px;
+  overflow: hidden;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+.topnav_divider {
+  border-left: 2px solid #4e4e4e;
+  height: 50%;
+}
+
+.topnav_divider_container {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.topnav_left {
+  float: left;
+}
+
+.topnav_logo {
+  height: 100px;
+  width: 200px;
+}
+
+.topnav_right {
+  align-items: center;
+  display: flex;
+  float: right;
+  height: 100%;
+}
+
+.topnav_search {
+  margin-left: 30px;
+  margin-right: 20px;
+}
+
+.topnav_search button[type=submit] {
+  background-color: white;
+  border: none;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+  cursor: pointer;
+  float: left;
+  height: 30px;
+  margin-left: 0px;
+  padding-left: 10px;
+}
+
+.topnav_search button[type=submit]:hover {
+  background-color: lightgrey;
+}
+
+.topnav_search select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: white;
+  background-image: url(../images/drop-down-arrow.png);
+  background-position: right 10px center;
+  background-repeat: no-repeat;
+  background-size: 8px 10px;
+  border: 0px;
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
+  border-right: 1px solid darkgrey;
+  float: left;
+  height: 30px;
+  outline: 0px;
+  padding-left: 15px;
+  position: relative;
+  width: 80px;
+}
+
+.topnav_search select:hover {
+  background-color: lightgrey;
+}
+
+.topnav_search input {
+  outline: none;
+}
+
+.topnav_search input[type=text] {
+  background-color: white;
+  border: none;
+  float: left;
+  height: 30px;
+  margin-right: 0px;
+  padding-left: 20px;
+}
+
+.topnav_signin {
+  margin-left: 15px;
+  margin-right: 30px;
+}
+
+.topnav_signin a {
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.topnav_signin a:hover {
+  background-color: #1b1b1b;
+}
+
+.topnav_user {
+  outline: none;
+}
+
+.topnav_user:hover .topnav_user_drop {
+  background-color: #1b1b1b;
+  outline: none;
+}
+
+.topnav_user:hover .topnav_user_drop_content {
+  display: block;
+  outline: none;
+}
+
+.topnav_user_drop {
+  background-color: #0c0c0d;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+}
+
+.topnav_user_drop_content {
+  background-color: #0c0c0d;
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.topnav_user_drop_content a {
+  color: white;
+  display: block;
+  font-size: 16px;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  width: 100px;
+}
+
+.topnav_user_drop_content a:hover {
+  background-color: #1b1b1b;
+  cursor: pointer;
+}
+
+.unban_button {
+  background-color: rgb(54, 100, 32);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.unban_button:hover {
+  background-color:  rgb(82, 129, 60);
+  cursor: pointer;
+}
+
+.wishlist_empty_message {
+  float: left;
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.wishlist_empty_message p {
+  font-size: 14px;
+}
+
+.wishlist_item {
+  display: inline-table;
+  height: 258px;
+  margin-bottom: 10px;
+  width: 50%;
+}
+
+.wishlist_item_left {
+  display: table-cell;
+  width: 172px;
+}
+
+.wishlist_item_left a:hover {
+  background-color: skyblue;
+  opacity: 0.8;
+}
+
+.wishlist_item_remove {
+  float: left;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.wishlist_item_right {
+  display: table-cell;
+  padding-left: 30px;
+  vertical-align: top;
+}
+
+.wishlist_item_right h2 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.wishlist_item_right h2 a {
+  color: white;
+  text-decoration: none;
+}
+
+.wishlist_item_right h2 a:hover {
+  color: rgb(124, 152, 230);
+  cursor: pointer;
+}
+
+.wishlist_item_right p {
+  color: lightgrey;
+  font-size: 14px;
+}
+
+.wishlist_items {
+  display: table;
+  width: 100%;
+}
+
+.wishlist_wrapper p {
+  padding-left: 10px;
+}
+
+.wrapper {
+  width: 100%;
+}
+
+.button {
+  border: 1px solid #918c8c;
+  background-color: #161313;
+  color: white;
+  padding: 10px 24px;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color:#454b45fd;
+}
+
+.add_button {
+  border: 1px solid #918c8c;
+  background-color: #336600;
+  color: white;
+  padding: 10px 24px;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.add_button:hover{
+  background-color: #408000;
+}
+
+.remove_button {
+  border: 1px solid #918c8c;
+  background-color: #660000;
+  color: white;
+  padding: 10px 24px;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.remove_button:hover{
+  background-color: #800000;
+}
+
+table {
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 10px;
+}
+
+table.fixed { table-layout:fixed; width:300px}
+table.fixed td { overflow: hidden; word-wrap:break-word;}
+
+table.review {
+  padding: 0px;
+  padding-left: 50px;
+  table-layout: fixed;
+  width: 800px;
+}
+
+table.review td {
+  table-layout: fixed;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+td {
+  width: 300px;
+}
+
+.center {
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 5vw);
+  grid-gap: 100px;
+}
+
+.wishlist_img {
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 35px;
+}
+
+/* ID */
+
+#home_blurb {
+  margin-bottom: 40px;
+  margin-top: 50px;
+  text-align: center;
+}
+
+#home_get_started_signup {
+  background-color: rgb(60, 79, 182);
+  border: none;
+  border-radius: 7px;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
+  text-decoration: none;
+}
+
+#home_get_started_signup:hover {
+  background-color: rgb(87, 103, 190);
+  cursor: pointer;
+}
+
+#home_get_started_signup_wrapper {
+  text-align: center;
+}
+
+#home_popular_title {
+  padding-left: 20px;
+  padding-bottom: 10px;
+}
+
+#profile_edit {
+  background-color: rgb(60, 79, 182);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+  text-align: center;
+  text-decoration: none;
+}
+
+#profile_edit:hover {
+  background-color: rgb(87, 103, 190);
+  cursor: pointer;
+}
+
+#review_blurb {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#search_query_summary {
+  font-size: 12px;
+  padding-left: 20px;
+}
+
+/* OTHER */
+
+::-webkit-scrollbar {
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0c0c0d; 
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: rgb(109, 109, 109); 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}

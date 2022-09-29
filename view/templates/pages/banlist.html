@@ -1,0 +1,35 @@
+{% extends "pages/layout.html" %}
+
+{% block content %}
+<div class="profile_wrapper">
+    <p><span style="color: orange">|</span> YOUR BLACKLISTED USERS</p>
+    <div class="search_results_separator"></div>
+
+    {% if banlist %}
+        <div class="banlist"></div>
+            {% for ban in banlist %}
+            <div class="banlist_item">
+                <div class="banlist_item_user">
+                    <a href = "{{ url_for('routes_bp.profile', user_id = ban.id) }}"><span style="color: red">|</span> <b>{{ban.username}}</b></a>
+                </div>
+                <div class="banlist_item_unban">
+                    <form method="POST">
+                        <button name = "remove" value = {{ban.id}} class="unban_button">UNBLACKLIST</button>
+                    </form>
+                </div>
+            </div>
+            <div class="review_item_separator"></div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="wishlist_empty_message">
+            {% if curruser == userid %}
+                <p>Your banlist is empty. Reviews are ignored for any person you ban!</p>
+            {% else %}
+                <p>Your banlist is currently empty.</p>
+            {% endif %}
+        </div>
+    {% endif %}
+    
+</div>
+{% endblock %}

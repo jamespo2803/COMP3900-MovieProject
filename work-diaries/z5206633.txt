@@ -1,0 +1,28 @@
+Katharine's Work Diary
+
+Week 1
+Group formed, chose FilmFinder project and established communication method on Discord.
+
+Week 2
+Group agreed to mostly use Python for project, but open to other programming languages. We wrote user stories and designated parts of the proposal to each member. I began work on and will collaborate with James on the system architecture.
+
+Week 3
+After agreeing to use the MVC architecture James and I completed the system architecture. Group completed the proposal.
+
+Week 4
+Designated work on controller as part of backend.
+
+Week 5
+Designated work on frontend sort movies by popularity, sprint 3, and search movies by directors, sprint 4, and to complete the quick search function. I began work on the quick search function first.
+
+Week 6
+Continued work on frontend quick search function and began working on sort movies by popularity.
+
+Week 7
+Completed order movies by popularity then alphabetically. Will continue working on frontend search function and its advanced features such as search by director.
+
+Week 8
+Search function complete. Search code was refactored. Attempted some frontend implementations but little success.
+
+Week 9
+Began group report.

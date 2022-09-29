@@ -1,0 +1,101 @@
+{% extends "pages/layout.html" %}
+
+
+
+{% block content %}
+  <div class="signup_wrapper">
+    <div class="login_title">
+      Create An Account
+    </div>
+
+    <div class="login_blurb">
+      Sign up for a POP! account to gain access to features such as wishlists.
+      <br><br>
+      Already have an account? <a href="{{ url_for('auth_bp.login') }}">Sign in here</a>.
+    </div>
+
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+      {{ message }}
+    </div>
+    {% endfor %}
+
+    <form method="POST" action="/signup">
+      {{ form.csrf_token }}
+
+      <div class="form_field">
+        <div class="form_field_title">
+          {{ form.name.label }}
+        </div>
+        <div class="form_field_input">
+          {{ form.name }}
+        </div>
+        <div class="form_error">
+          {% if form.name.errors %}
+              {% for error in form.name.errors %}
+                <br>
+                {{ error }}
+              {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="form_field">
+        <div class="form_field_title">
+          {{ form.email.label }}
+        </div>
+        <div class="form_field_input">
+          {{ form.email }}
+        </div>
+        <div class="form_error">
+          {% if form.email.errors %}
+              {% for error in form.email.errors %}
+                <br>
+                {{ error }}
+              {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="form_field">
+        <div class="form_field_title">
+          {{ form.password.label }}
+        </div>
+        <div class="form_field_input">
+          {{ form.password }}
+        </div>
+        <div class="form_error">
+          {% if form.password.errors %}
+              {% for error in form.password.errors %}
+                <br>
+                {{ error }}
+              {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="form_field">
+        <div class="form_field_title">
+          {{ form.confirm.label }}
+        </div>
+        <div class="form_field_input">
+          {{ form.confirm }}
+        </div>
+        <div class="form_error">
+          {% if form.confirm.errors %}
+              {% for error in form.confirm.errors %}
+                <br>
+                {{ error }}
+              {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="form_field">
+        <div class="signup_submit">
+          {{ form.submit }}
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock %}
