@@ -1,5 +1,5 @@
 CODE FOR COMP3900 GROUP PROJECT
-A movie rating system for users to share their reviews on shows.
+A movie rating system for users to share their reviews on shows, similar to rotten tomatoes.
 
 No makefile is involved in this system.
 
